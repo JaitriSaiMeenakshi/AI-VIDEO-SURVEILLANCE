@@ -1,15 +1,16 @@
-video = "";
+
 objects = [];
 status = "";
 
 function preload(){
     video = createVideo('video.mp4');
-    video.hide();
+   
 }
 
 function setup() {
     canvas = createCanvas(480, 380);
     canvas.center();
+    video.hide();
 }
 
 function draw(){
@@ -18,7 +19,7 @@ function draw(){
         {
             objectDetector.detect(video,gotResult);
             for (i=0; i< objects.length; i++) {
-                document.getElementById("status").innerHTML = "Status : Ojects Detectd";
+                document.getElementById("status").innerHTML = "Status : Objects Detectd";
                 document.getElementById("number_of_objects").innerHTML = "Number of objects detected are: " + objects.length;
 
                 fill("#FF0000");
@@ -36,6 +37,7 @@ function gotResult(error, results) {
         console.log(error);
     }
     console.log(results);
+    objects = results
 }
 
 function start()
